@@ -1,11 +1,20 @@
 import streamlit as st
-import makeData
+import pandas as pd
+import matplotlib.pyplot as plt
+import makeData  # Your custom module
 
-# Assign the plot object from your module
-plt_obj = makeData.plt
+st.title("BMI Analytics Dashboard")
 
-st.title("My BMI Data Visualization")
+# 1. Trigger the data/plot generation from your module
+# Assuming makeData creates a plot when imported or called
+plt_obj = makeData.plt 
 
-# Instead of plt.show(), use st.pyplot()
-# We pass the 'gcf' (Get Current Figure) to streamlit
-st.pyplot(plt_obj.gcf())
+# 2. Display the Plot in Streamlit
+st.subheader("Visualized BMI Trends")
+
+# We use gcf() to 'Get Current Figure' from the matplotlib backend
+fig = plt_obj.gcf() 
+st.pyplot(fig)
+
+# 3. Add Streamlit interactions below the graph
+st.write("Analysis complete. Use the sidebar to adjust parameters.")
